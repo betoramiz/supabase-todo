@@ -1,0 +1,13 @@
+<h3>Add a Task</h3>
+<div>
+  <form [formGroup]="taskForm" (ngSubmit)="saveTask()">
+    <input type="text" formControlName="name" placeholder="Task Name..." autocomplete="off">
+    <br>
+    <label *ngIf=" taskForm.controls['name'].touched && taskForm.controls['name'].hasError('required')" style="color: red">Task name is required</label>
+    <br>
+    <br>
+    <textarea formControlName="description"></textarea>
+    <br>
+    <input type="submit" value="Add" [disabled]="taskForm.invalid">
+  </form>
+</div>

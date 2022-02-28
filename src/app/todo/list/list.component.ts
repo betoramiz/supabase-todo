@@ -13,11 +13,10 @@ export class ListComponent implements OnInit {
   constructor(private service: TodoService) { }
 
   ngOnInit(): void {
-    // this.service.addTodo();
+    this.service.getAllTodos().then(t => this.todos = t);
   }
 
 
   getAllTodos() {
-    this.service.getAllTodos().then(t => this.todos = t);
   }
 }

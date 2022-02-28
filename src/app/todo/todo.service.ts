@@ -27,12 +27,12 @@ export class TodoService {
     }
   }
 
-  addTodo() {
-    const todoTask: Todo = {
-      name: 'Test 1',
-      description: 'description task'
-    };
-
-    this.subabaseClient.from('Todo').insert(todoTask).then(r => console.log(r));
+  async addTodo(todo: Todo): Promise<Todo|null> {
+    const { data, error } = await this.subabaseClient.from<Todo>('Todo').insert(todo).single();
+    if(error) {
+      return null;
+    } else {
+      return data;
+    }
   }
 }
