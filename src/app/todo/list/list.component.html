@@ -3,5 +3,5 @@
 <input type="button" (click)="getAllTodos()" value="Get All Todos">
 
 <ul>
-  <li *ngFor="let todo of todos"> Id: {{ todo.id }} - Name: {{ todo.name }} </li>
+  <li *ngFor="let todo of todos"> Team: {{ todo.team.name }} - Id: {{ todo.id }} - Task: {{ todo.name }} </li>
 </ul>

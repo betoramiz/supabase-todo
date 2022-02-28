@@ -17,7 +17,9 @@ export class TodoService {
   }
 
   async getAllTodos(): Promise<TodoBrief[]> {
-    const { data, error } = await this.subabaseClient.from('Todo').select('id, name');
+    const { data, error } = await this.subabaseClient
+      .from<TodoBrief>('Todo')
+      .select('id, name, team: team_id (name)');
     if(error) {
       console.log('error', error);
       return [];
@@ -32,6 +34,7 @@ export class TodoService {
     if(error) {
       return null;
     } else {
+      console.log('data added', data);
       return data;
     }
   }
